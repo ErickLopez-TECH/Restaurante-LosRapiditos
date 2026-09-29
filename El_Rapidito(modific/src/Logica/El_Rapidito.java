@@ -4,6 +4,7 @@
  */
 package Logica;
 import Presentacion.FrmLogin;
+import Datos.Conexion;
 /**
  *
  * @author triamus
@@ -18,6 +19,8 @@ public class El_Rapidito {
         FrmLogin lgn = new FrmLogin();
         lgn.setLocationRelativeTo(null);//Establezca la posicion de acuerdo a nada
         lgn.setVisible(true);
+        
+        Conexion.conectar();
     }
     
 }

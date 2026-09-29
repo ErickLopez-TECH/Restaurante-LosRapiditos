@@ -17,8 +17,16 @@ public class ObjCaja {
     public ObjCaja() {
     }
 
+    //para editar
     public ObjCaja(int id, String nombre, String ubicacion) {
         this.id = id;
+        this.nombre = nombre;
+        this.ubicacion = ubicacion;
+    }
+    
+    //para agregar
+    public ObjCaja(String nombre, String ubicacion) {
+        
         this.nombre = nombre;
         this.ubicacion = ubicacion;
     }
