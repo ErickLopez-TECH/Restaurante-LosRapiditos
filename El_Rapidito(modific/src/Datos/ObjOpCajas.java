@@ -14,25 +14,40 @@ public class ObjOpCajas {
     
     private int idProceso;
     private int idCaja;
-    private int tipoProceso; //--Combo Box-->Apertura o Cierre
-    private Date fecha;
-    private Double monto;//Con cuanta plata inicie
+    private Date fechApertura;
+    private Double montoApetura;//Con cuanta plata inicie
+    private Date fechCierre;
+    private Double montoCierre;//Con cuanta plata cierre
+    private int estado;
 
     public ObjOpCajas() {
     }
+    
+    
+    
 
-    public ObjOpCajas(int idProceso, int idCaja, int tipoProceso, Date fecha, Double monto) {
+    public ObjOpCajas(int idProceso, int idCaja, Date fechApertura, Double montoApetura, Date fechCierre, Double montoCierre, int estado) {
         this.idProceso = idProceso;
         this.idCaja = idCaja;
-        this.tipoProceso = tipoProceso;
-        this.fecha = fecha;
-        this.monto = monto;
+        this.fechApertura = fechApertura;
+        this.montoApetura = montoApetura;
+        this.fechCierre = fechCierre;
+        this.montoCierre = montoCierre;
+        this.estado = estado;
     }
     
-    //getters
+   //getters
 
-    public Date getFecha() {
-        return fecha;
+    public int getEstado() {
+        return estado;
+    }
+
+    public Date getFechApertura() {
+        return fechApertura;
+    }
+
+    public Date getFechCierre() {
+        return fechCierre;
     }
 
     public int getIdCaja() {
@@ -43,18 +58,26 @@ public class ObjOpCajas {
         return idProceso;
     }
 
-    public Double getMonto() {
-        return monto;
+    public Double getMontoApetura() {
+        return montoApetura;
     }
 
-    public int getTipoProceso() {
-        return tipoProceso;
+    public Double getMontoCierre() {
+        return montoCierre;
     }
     
     //setters
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    public void setFechApertura(Date fechApertura) {
+        this.fechApertura = fechApertura;
+    }
+
+    public void setFechCierre(Date fechCierre) {
+        this.fechCierre = fechCierre;
     }
 
     public void setIdCaja(int idCaja) {
@@ -65,12 +88,13 @@ public class ObjOpCajas {
         this.idProceso = idProceso;
     }
 
-    public void setMonto(Double monto) {
-        this.monto = monto;
+    public void setMontoApetura(Double montoApetura) {
+        this.montoApetura = montoApetura;
     }
 
-    public void setTipoProceso(int tipoProceso) {
-        this.tipoProceso = tipoProceso;
+    public void setMontoCierre(Double montoCierre) {
+        this.montoCierre = montoCierre;
     }
+    
     
 }
