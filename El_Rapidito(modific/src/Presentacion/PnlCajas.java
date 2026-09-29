@@ -7,6 +7,7 @@ package Presentacion;
 import java.util.ArrayList;
 import Datos.ObjCaja;
 import Datos.Estructuras;
+import Logica.Metodos;
 import javax.swing.JOptionPane;
 /**
  *
@@ -15,12 +16,13 @@ import javax.swing.JOptionPane;
 public class PnlCajas extends javax.swing.JPanel {
 
     Estructuras almacen = new Estructuras();
+    Metodos misMetodos = new Metodos();
     /**
      * Creates new form PnlCajas
      */
     public PnlCajas() {
         initComponents();
-        
+        lstLista.setModel(almacen.mostrarCajas());
         
         // Botón Guardar
 /*btnGuardar.setBackground(new java.awt.Color(40, 167, 69));
@@ -91,10 +93,12 @@ btnBorrar.setUI(new javax.swing.plaf.basic.BasicButtonUI()); // Desconecta la pi
         btnBorrar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/32x32gtk-delete.png"))); // NOI18N
         btnBorrar.setText("Eliminar");
+        btnBorrar.addActionListener(this::btnBorrarActionPerformed);
 
         btnBuscar.setBackground(new java.awt.Color(19, 45, 82));
         btnBuscar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnBuscar.setText("...");
+        btnBuscar.addActionListener(this::btnBuscarActionPerformed);
 
         lstLista.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { " " };
@@ -164,23 +168,63 @@ btnBorrar.setUI(new javax.swing.plaf.basic.BasicButtonUI()); // Desconecta la pi
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        if(!validarCampos()){
-            return;
+        String idTexto = txtId.getText().trim();
+        String nombre = txtNombre.getText().trim();
+        String ubicacion = txtUbicacion.getText().trim();
+
+        if (idTexto.isEmpty()) {
+            // 1. NUEVA CAJA: No pasamos ID, SQLite autogenera la clave primaria
+            ObjCaja miCaja = new ObjCaja(nombre, ubicacion);
+            almacen.agregarCaja(miCaja); 
+        } else {
+            // 2. EDITAR CAJA: Actualizamos en SQLite con el ID existente
+            int id = Integer.parseInt(idTexto);
+            ObjCaja miCaja = new ObjCaja(id, nombre, ubicacion);
+            almacen.editarCaja(miCaja); // Descomentado
         }
-        
-        int id = Integer.parseInt(txtId.getText());
-        String nombre = txtNombre.getText();
-        String ubicacion= txtUbicacion.getText();
-        
-        ObjCaja miCaja = new ObjCaja(id, nombre, ubicacion);
-        almacen.agregarCaja(miCaja);
-        
-        almacen.mostrarCajas();
-        
+
+        // Refrescamos el JList y limpiamos la pantalla
+        lstLista.setModel(almacen.mostrarCajas());
         txtId.setText("");
         txtNombre.setText("");
         txtUbicacion.setText("");
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        if(!txtId.getText().equals("")){
+            int id = Integer.parseInt(txtId.getText());
+            
+            
+            //ya tengo los datos
+            ObjCaja miCaja = misMetodos.buscarCajaPorId(id);
+            
+            if (miCaja != null) {
+                txtNombre.setText(miCaja.getNombre());
+                txtUbicacion.setText(miCaja.getUbicacion());
+             } else {
+                // Si devuelve null, significa que no existe caja con ese ID
+                javax.swing.JOptionPane.showMessageDialog(this, "No se encontró ninguna caja con el ID: " + id);
+                txtNombre.setText("");
+                txtUbicacion.setText("");
+        }
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        // TODO add your handling code here:
+        if (!txtId.getText().trim().equals("")) {
+            int id = Integer.parseInt(txtId.getText().trim());
+
+            almacen.quitarCaja(id);
+
+            // Refrescar lista y limpiar campos
+            lstLista.setModel(almacen.mostrarCajas());
+            txtId.setText("");
+            txtNombre.setText("");
+            txtUbicacion.setText("");
+        }
+    }//GEN-LAST:event_btnBorrarActionPerformed
 
     private boolean validarCampos(){
         
