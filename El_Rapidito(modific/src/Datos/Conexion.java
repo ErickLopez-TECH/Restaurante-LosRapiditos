@@ -50,6 +50,13 @@ public class Conexion {
         String sqlUsuario = "CREATE TABLE IF NOT EXISTS Usuario ("
                           + "  id INTEGER PRIMARY KEY AUTOINCREMENT,"
                           + "  nombre TEXT NOT NULL,"
+                          + "  apellido TEXT NOT NULL,"
+                          + "  cedula TEXT NOT NULL,"
+                          + "  correo TEXT NOT NULL,"
+                          + "  telefono TEXT NOT NULL,"
+                          + "  direccion TEXT NOT NULL,"
+                          + "  estado TEXT NOT NULL,"
+                          + "  rol TEXT NOT NULL,"
                           + "  clave TEXT NOT NULL"
                           + ");";
 

@@ -10,17 +10,18 @@ package Datos;
  */
 public class ObjUsuario {
     
+    //El nombre se realizara una modificacion de nombre + Apellido
     private int id;
-    private String cedula;
     private String nombre;
     private String apellidos;
-    private String direccion;
-    private String telefono;
+    private String cedula;
     private String correo;
-    private String nomUsuario;
-    private String clave;
+    private String telefono;
+    private String direccion;
     private int estado; //0(inactivo) y 1(Activo)
     private int rol; //0(Admin), 1(Mesero), 3(Otro)
+    private String clave;
+    
     
     //contructores
 
@@ -35,7 +36,7 @@ public class ObjUsuario {
         this.direccion = direccion;
         this.telefono = telefono;
         this.correo = correo;
-        this.nomUsuario = nomUsuario;
+        
         this.clave = clave;
         this.estado = estado;
         this.rol = rol;
@@ -71,9 +72,7 @@ public class ObjUsuario {
         return id;
     }
 
-    public String getNomUsuario() {
-        return nomUsuario;
-    }
+    
 
     public String getNombre() {
         return nombre;
@@ -118,9 +117,7 @@ public class ObjUsuario {
         this.id = id;
     }
 
-    public void setNomUsuario(String nomUsuario) {
-        this.nomUsuario = nomUsuario;
-    }
+    
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
