@@ -33,14 +33,29 @@ construida con arquitectura por capas y persistencia ligera.
 ## 🎬 Demostración visual
 
 <div align="center">
-  <img width="500" alt="demos" src="https://github.com/user-attachments/assets/aafd0539-e79c-4a6a-8c5c-eaff0afb22aa" />
-  <br>
-  <sub><i>Navegación, edición y consulta de cajas e inventario en tiempo real.</i></sub>
+<table>
+  <tr>
+    <td align="center">
+      <img width="400" alt="Demo 1" src="https://github.com/user-attachments/assets/aafd0539-e79c-4a6a-8c5c-eaff0afb22aa" />
+      <br><sub><b>Gestión de cajas</b></sub>
+    </td>
+    <td align="center">
+      <img width="400" alt="Demo 2" src="URL_DEL_GIF_2" />
+      <br><sub><b>Inventario</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img width="400" alt="Demo 3" src="URL_DEL_GIF_3" />
+      <br><sub><b>Facturación</b></sub>
+    </td>
+    <td align="center">
+      <img width="400" alt="Demo 4" src="URL_DEL_GIF_4" />
+      <br><sub><b>Usuarios</b></sub>
+    </td>
+  </tr>
+</table>
 </div>
-
-> 💡 **Nota:** si el GIF no se muestra, verifica que el archivo exista en `src/Imagenes/demo.gif`
-> y que la ruta del enlace coincida exactamente (GitHub distingue mayúsculas y minúsculas).
-
 ---
 
 ## ✨ Características
