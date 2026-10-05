@@ -33,28 +33,9 @@ construida con arquitectura por capas y persistencia ligera.
 ## 🎬 Demostración visual
 
 <div align="center">
-<table>
-  <tr>
-    <td align="center">
-      <img width="400" alt="Demo 1" src="https://github.com/user-attachments/assets/aafd0539-e79c-4a6a-8c5c-eaff0afb22aa" />
-      <br><sub><b>Gestión de cajas</b></sub>
-    </td>
-    <td align="center">
-      <img width="400" alt="Demo 1" src="https://github.com/user-attachments/assets/aafd0539-e79c-4a6a-8c5c-eaff0afb22aa" />
-      <br><sub><b>Inventario</b></sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-       <img width="400" alt="Demo 1" src="https://github.com/user-attachments/assets/aafd0539-e79c-4a6a-8c5c-eaff0afb22aa" />
-      <br><sub><b>Facturación</b></sub>
-    </td>
-    <td align="center">
-       <img width="400" alt="Demo 1" src="https://github.com/user-attachments/assets/aafd0539-e79c-4a6a-8c5c-eaff0afb22aa" />
-      <br><sub><b>Usuarios</b></sub>
-    </td>
-  </tr>
-</table>
+  <img width="500" alt="demos" src="https://github.com/user-attachments/assets/aafd0539-e79c-4a6a-8c5c-eaff0afb22aa" />
+  <br>
+  <sub><i>Navegación, edición y consulta de cajas e inventario en tiempo real.</i></sub>
 </div>
 ---
 
