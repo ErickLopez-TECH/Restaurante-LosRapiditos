@@ -40,17 +40,17 @@ construida con arquitectura por capas y persistencia ligera.
       <br><sub><b>Gestión de cajas</b></sub>
     </td>
     <td align="center">
-      <img width="400" alt="Demo 2" src="[URL_DEL_GIF_2](https://github.com/user-attachments/assets/aafd0539-e79c-4a6a-8c5c-eaff0afb22aa)" />
+      <img width="400" alt="Demo 1" src="https://github.com/user-attachments/assets/aafd0539-e79c-4a6a-8c5c-eaff0afb22aa" />
       <br><sub><b>Inventario</b></sub>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img width="400" alt="Demo 3" src="[URL_DEL_GIF_3](https://github.com/user-attachments/assets/aafd0539-e79c-4a6a-8c5c-eaff0afb22aa)" />
+       <img width="400" alt="Demo 1" src="https://github.com/user-attachments/assets/aafd0539-e79c-4a6a-8c5c-eaff0afb22aa" />
       <br><sub><b>Facturación</b></sub>
     </td>
     <td align="center">
-      <img width="400" alt="Demo 4" src="[URL_DEL_GIF_4](https://github.com/user-attachments/assets/aafd0539-e79c-4a6a-8c5c-eaff0afb22aa)" />
+       <img width="400" alt="Demo 1" src="https://github.com/user-attachments/assets/aafd0539-e79c-4a6a-8c5c-eaff0afb22aa" />
       <br><sub><b>Usuarios</b></sub>
     </td>
   </tr>
