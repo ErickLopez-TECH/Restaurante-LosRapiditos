@@ -35,11 +35,7 @@ construida con arquitectura por capas y persistencia ligera.
 
 <div align="center">
 
-<img src="src/Imagenes/demo.gif" alt="Demostración de El Rapidito" width="800">
-
-<!-- Si no se ve, reemplaza la línea de arriba por la URL RAW:
-<img src="https://raw.githubusercontent.com/TU_USUARIO/El_Rapidito/main/src/Imagenes/demo.gif" alt="Demostración de El Rapidito" width="800">
--->
+<img src="El_Rapidito%28modific/src/Imagenes/demo.gif" alt="Demostración de El Rapidito" width="800">
 
 *Navegación, edición y consulta de cajas e inventario en tiempo real.*
 
