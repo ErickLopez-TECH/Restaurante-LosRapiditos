@@ -128,13 +128,15 @@ Desarrollador Java · Apasionado por los sistemas de gestión y las bases de dat
 
 ## 🤝 Conectemos
 
-¿Tienes ideas, comentarios o quieres colaborar? ¡Escríbeme!
+¿Tienes ideas, comentarios o quieres colaborar? **¡Escríbeme!**
 
 <div align="center">
 
-
-[![Email](https://img.shields.io/badge/Email-tu__correo@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](ericklopezborge21@gmail.com)
+[![Email](https://img.shields.io/badge/Email-Escr%C3%ADbeme-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:ericklopezborge21@gmail.com)
+&nbsp;&nbsp;
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-Chatear-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/50664407615)
+
+<sub>📧 ericklopezborge21@gmail.com &nbsp;·&nbsp; 📱 +506 6440 7615</sub>
 
 </div>
 
