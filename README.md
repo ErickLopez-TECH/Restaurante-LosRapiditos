@@ -35,7 +35,7 @@ construida con arquitectura por capas y persistencia ligera.
 
 <div align="center">
 
-<img src="El_Rapidito%28modific/src/Imagenes/demo.gif" alt="Demostración de El Rapidito" width="800">
+<img src="El_Rapidito/El_Rapidito%28modific/src/Imagenes/demo.gif" alt="Demostración de El Rapidito" width="800">
 
 *Navegación, edición y consulta de cajas e inventario en tiempo real.*
 
