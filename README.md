@@ -24,7 +24,6 @@ construida con arquitectura por capas y persistencia ligera.
 - [🏗️ Arquitectura](#️-arquitectura-por-capas-n-tier)
 - [📂 Estructura del proyecto](#-estructura-del-proyecto)
 - [🛠️ Tecnologías](#️-tecnologías-utilizadas)
-- [⚙️ Instalación y ejecución](#️-instalación-y-ejecución)
 - [🗺️ Roadmap](#️-roadmap)
 - [👤 Autor](#-autor)
 - [🤝 Conectemos](#-conectemos)
@@ -106,32 +105,7 @@ El_Rapidito/
 
 ---
 
-## ⚙️ Instalación y ejecución
 
-### Requisitos previos
-
-- [JDK](https://adoptium.net/) 8 o superior
-- Driver JDBC de SQLite (`sqlite-jdbc`) agregado al classpath
-- Apache NetBeans (recomendado) o cualquier IDE compatible con Java
-
-### Pasos
-
-```bash
-# 1. Clonar el repositorio
-git clone https://github.com/TU_USUARIO/El_Rapidito.git
-
-# 2. Entrar al directorio
-cd El_Rapidito
-```
-
-3. Abre el proyecto en **Apache NetBeans** (`File → Open Project`).
-4. Agrega el JAR de `sqlite-jdbc` a las librerías del proyecto.
-5. Ejecuta la clase principal con **Run Project** (`F6`).
-
-> 🗄️ **No necesitas crear la base de datos manualmente.** En el primer arranque el sistema genera
-> el archivo `.db` y el esquema relacional automáticamente.
-
----
 
 ## 🗺️ Roadmap
 
@@ -147,7 +121,7 @@ cd El_Rapidito
 
 ## 👤 Autor
 
-**Tu Nombre**
+**Erick Lopez**
 Desarrollador Java · Apasionado por los sistemas de gestión y las bases de datos.
 
 ---
@@ -158,10 +132,9 @@ Desarrollador Java · Apasionado por los sistemas de gestión y las bases de dat
 
 <div align="center">
 
-[![GitHub](https://img.shields.io/badge/GitHub-TU__USUARIO-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/TU_USUARIO)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Tu_Nombre-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/TU_PERFIL)
-[![Email](https://img.shields.io/badge/Email-tu__correo@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:tu_correo@gmail.com)
-[![WhatsApp](https://img.shields.io/badge/WhatsApp-Chatear-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/506XXXXXXXX)
+
+[![Email](https://img.shields.io/badge/Email-tu__correo@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](ericklopezborge21@gmail.com)
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-Chatear-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/50664407615)
 
 </div>
 
