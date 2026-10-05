@@ -33,14 +33,9 @@ construida con arquitectura por capas y persistencia ligera.
 ## 🎬 Demostración visual
 
 <div align="center">
-
-<img width="801" height="638" alt="demos" src="https://github.com/user-attachments/assets/aafd0539-e79c-4a6a-8c5c-eaff0afb22aa" />
-
-
-
-
-*Navegación, edición y consulta de cajas e inventario en tiempo real.*
-
+  <img width="500" alt="demos" src="https://github.com/user-attachments/assets/aafd0539-e79c-4a6a-8c5c-eaff0afb22aa" />
+  <br>
+  <sub><i>Navegación, edición y consulta de cajas e inventario en tiempo real.</i></sub>
 </div>
 
 > 💡 **Nota:** si el GIF no se muestra, verifica que el archivo exista en `src/Imagenes/demo.gif`
