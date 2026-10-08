@@ -12,9 +12,9 @@ import java.util.Date;
  */
 public class ObjOpCajas {
     
-    private int idProceso;
-    private int idCaja;
-    private Date fechApertura;
+    private int idProceso;//
+    private int idCaja;//
+    private Date fechApertura;//
     private Double montoApetura;//Con cuanta plata inicie
     private Date fechCierre;
     private Double montoCierre;//Con cuanta plata cierre

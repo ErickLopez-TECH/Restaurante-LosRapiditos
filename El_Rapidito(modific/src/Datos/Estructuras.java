@@ -172,7 +172,23 @@ public void editarCaja(ObjCaja miCaja) {
     |                                                         |
     ----------------------------------------------------------*/
     
+    
+    public void agregarOpCaja(ObjOpCajas miOpCaja) {
+        String sql = "INSERT INTO OpCaja(idCaja,fechaApertura,montoApertura,fechaCierre,montoCierre,estado) VALUES(?, ?,?,?,?,?)";
 
+        try (Connection conn = Conexion.conectar();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, miOpCaja.getIdCaja());
+            pstmt.setDate(2, new java.sql.Date(miOpCaja.getFechApertura().getTime()));
+            pstmt.setDate(2, new java.sql.Date(miOpCaja.getFechApertura().getTime()));
+            pstmt.executeUpdate();
+            System.out.println("Caja guardada en SQLite con éxito.");
+
+        } catch (SQLException e) {
+            System.err.println("Error al guardar caja: " + e.getMessage());
+        }
+    }
     
     
 }
