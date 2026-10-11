@@ -107,7 +107,8 @@ El_Rapidito/
 - [ ] Módulo de facturación completo
 - [ ] Gestión de roles y permisos de usuario
 - [ ] Reportes y exportación (PDF / Excel)
-- [ ] Respaldo automático de la base de datos
+- [x] Respaldo automático de la base de datos
+- [ ] Conexión SQLite + PostgreSQL y modo sin conexión.
 
 ---
 
