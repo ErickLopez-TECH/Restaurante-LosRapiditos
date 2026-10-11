@@ -53,29 +53,32 @@ public class Conexion {
                           + "  apellido TEXT NOT NULL,"
                           + "  cedula TEXT NOT NULL,"
                           + "  correo TEXT NOT NULL,"
+                          + "  nombreUser TEXT NOT NULL,"
                           + "  telefono TEXT NOT NULL,"
                           + "  direccion TEXT NOT NULL,"
-                          + "  estado TEXT NOT NULL,"
-                          + "  rol TEXT NOT NULL,"
+                          + "  estado INTEGER NOT NULL,"
+                          + "  rol INTEGER NOT NULL,"
                           + "  clave TEXT NOT NULL"
                           + ");";
         
         String sqlOpCaja = "CREATE TABLE IF NOT EXISTS OpCaja ("
                           + "  id INTEGER PRIMARY KEY AUTOINCREMENT,"
-                          + "  idCaja INTEGER NOT NULL,"
-                          + "  fechaApertura TEXT NOT NULL,"
-                          + "  montoApertura TEXT NOT NULL,"
-                          + "  fechaCierre TEXT NOT NULL,"
-                          + "  montoCierre TEXT NOT NULL,"
-                          + "  estado TEXT NOT NULL,"
+                          + "  idCaja INTEGER ,"
+                          + "  fechaApertura TEXT ,"
+                          + "  montoApertura TEXT ,"
+                          + "  fechaCierre TEXT ,"
+                          + "  montoCierre TEXT ,"
+                          + "  estado INTEGER"
                           + ");";
+        
+        
 
         try (Statement stmt = conn.createStatement()) {
             stmt.execute(sqlCaja);
             stmt.execute(sqlUsuario);
             stmt.execute(sqlOpCaja);
         } catch (SQLException e) {
-            System.err.println("Error al crear tablas: " + e.getMessage() + sqlOpCaja);
+            System.err.println("Error al crear tablas: " + e.getMessage());
         }
     }
 }

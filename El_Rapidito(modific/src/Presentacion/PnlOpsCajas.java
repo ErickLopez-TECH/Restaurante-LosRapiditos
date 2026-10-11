@@ -7,7 +7,10 @@ package Presentacion;
 import java.util.ArrayList;
 import Datos.ObjCaja;
 import Datos.Estructuras;
+import Datos.ObjOpCajas;
 import Logica.Metodos;
+import java.util.Date;
+import javax.swing.JOptionPane;
 /**
  *
  * @author triamus
@@ -21,6 +24,8 @@ public class PnlOpsCajas extends javax.swing.JPanel {
      */
     public PnlOpsCajas() {
         initComponents();
+        almacen.mostrarCajas();
+        tblOp.setModel(almacen.mostrarOpCajas());
     }
 
     /**
@@ -49,8 +54,11 @@ public class PnlOpsCajas extends javax.swing.JPanel {
         cmbEstado = new javax.swing.JComboBox<>();
         btnGuardar = new javax.swing.JButton();
         btnBorrar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        lstCajas = new javax.swing.JList<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblOp = new javax.swing.JTable();
+        dtpFApertura = new com.toedter.calendar.JDateChooser();
+        dtpFCierre = new com.toedter.calendar.JDateChooser();
 
         setMinimumSize(new java.awt.Dimension(630, 670));
         setPreferredSize(new java.awt.Dimension(630, 670));
@@ -86,9 +94,20 @@ public class PnlOpsCajas extends javax.swing.JPanel {
         btnBuscar.addActionListener(this::btnBuscarActionPerformed);
 
         txtCaja.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtCaja.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCajaFocusLost(evt);
+            }
+        });
 
         txtNomCaja.setEditable(false);
         txtNomCaja.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtNomCaja.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNomCajaFocusLost(evt);
+            }
+        });
+        txtNomCaja.addActionListener(this::txtNomCajaActionPerformed);
 
         txtMApertura.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -106,24 +125,32 @@ public class PnlOpsCajas extends javax.swing.JPanel {
         btnBorrar.setText("Eliminar");
         btnBorrar.addActionListener(this::btnBorrarActionPerformed);
 
-        lstCajas.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { " " };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(lstCajas);
+        tblOp.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        tblOp.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tblOp);
+
+        jScrollPane3.setViewportView(jScrollPane2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTitulo)
+                .addGap(151, 151, 151))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(btnGuardar)
-                        .addGap(97, 97, 97)
-                        .addComponent(btnBorrar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(106, 106, 106)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,19 +182,20 @@ public class PnlOpsCajas extends javax.swing.JPanel {
                                     .addComponent(txtNomCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnBuscar)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(dtpFCierre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(cmbEstado, javax.swing.GroupLayout.Alignment.LEADING, 0, 180, Short.MAX_VALUE)
                                 .addComponent(txtMCierre, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtMApertura, javax.swing.GroupLayout.Alignment.LEADING)))))
+                                .addComponent(txtMApertura, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(dtpFApertura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(btnGuardar)
+                        .addGap(97, 97, 97)
+                        .addComponent(btnBorrar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(7, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblTitulo)
-                        .addGap(151, 151, 151))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,13 +214,17 @@ public class PnlOpsCajas extends javax.swing.JPanel {
                         .addComponent(txtCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtNomCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(15, 15, 15)
-                .addComponent(lblFApertura)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFApertura)
+                    .addComponent(dtpFApertura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMApertura)
                     .addComponent(txtMApertura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addComponent(lblFCierre)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblFCierre)
+                    .addComponent(dtpFCierre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMCierre)
@@ -201,31 +233,156 @@ public class PnlOpsCajas extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEstado)
                     .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnBorrar))
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+        String idTexto = txtId.getText().trim();
         
+        Date fechaApertura = dtpFApertura.getDate();
+        Date fechaCierre = dtpFCierre.getDate();
+        int estado = cmbEstado.getSelectedIndex();
+
+        // 1. Convertir los montos de String a double de forma segura
+        double montoApertura = 0.0;
+        double montoCierre = 0.0;
+        int caja = 0;
+
+        try {
+            if (!txtMApertura.getText().trim().isEmpty()) {
+                montoApertura = Double.parseDouble(txtMApertura.getText().trim());
+            }
+            if (!txtMCierre.getText().trim().isEmpty()) {
+                montoCierre = Double.parseDouble(txtMCierre.getText().trim());
+            }
+            if (!txtCaja.getText().trim().isEmpty()) {
+                caja = Integer.parseInt(txtCaja.getText().trim());
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese valores numéricos válidos en los montos.", "Error de formato", JOptionPane.ERROR_MESSAGE);
+            return; // Detiene la ejecución si hay un error
+        }
+
+// 2. Ahora ya puedes enviar las variables double (montoApertura y montoCierre) a tu objeto u operación:
+// Ej: ObjOpCajas miOp = new ObjOpCajas(..., montoApertura, ..., montoCierre, ...);
+
+        if (idTexto.isEmpty()) {
+            // 1. NUEVA CAJA: SQLite autogenera la clave primaria
+            ObjOpCajas miOp = new ObjOpCajas(caja, fechaApertura, montoApertura, fechaCierre, montoCierre, estado);
+            almacen.agregarOpCaja(miOp); 
+        } else {
+            // 2. EDITAR CAJA: Actualizamos en SQLite con el ID existente
+            int id = Integer.parseInt(idTexto);
+            ObjOpCajas miOpCajas = new ObjOpCajas(id, caja, fechaApertura, montoApertura, fechaCierre, montoCierre, estado);
+            almacen.editarOpCaja(miOpCajas); 
+        }
+        tblOp.setModel(almacen.mostrarOpCajas());
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-       
+       if(!txtId.getText().equals("")){
+            int id = Integer.parseInt(txtId.getText());
+            
+            
+            //ya tengo los datos
+            ObjOpCajas miOpCaja = misMetodos.buscarOpPorId(id);
+            
+            if (miOpCaja != null) {
+                txtCaja.setText(String.valueOf(miOpCaja.getIdCaja()));
+                dtpFApertura.setDate(miOpCaja.getFechApertura());
+                txtMApertura.setText(String.valueOf(miOpCaja.getMontoApetura()));
+                dtpFCierre.setDate(miOpCaja.getFechCierre());
+                txtMCierre.setText(String.valueOf(miOpCaja.getMontoCierre()));
+                cmbEstado.setSelectedIndex(miOpCaja.getEstado());
+             } else {
+                // Si devuelve null, significa que no existe caja con ese ID
+                javax.swing.JOptionPane.showMessageDialog(this, "No se encontró ninguna caja con el ID: " + id);
+
+        }
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
         // TODO add your handling code here:
-        
+        // TODO add your handling code here:
+        if (!txtId.getText().trim().equals("")) {
+            int id = Integer.parseInt(txtId.getText().trim());
+
+            almacen.quitarOpCaja(id);
+            tblOp.setModel(almacen.mostrarOpCajas());
+
+            // Refrescar lista y limpiar campos
+           // lstLista.setModel(almacen.mostrarCajas());
+            txtId.setText("");
+            //txtNombre.setText("");
+          //  txtUbicacion.setText("");
+        }
        
     }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void txtNomCajaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomCajaFocusLost
+        // TODO add your handling code here:
+        
+        if (!txtCaja.getText().trim().isEmpty()) {
+        try {
+            int id = Integer.parseInt(txtCaja.getText().trim());
+            
+            // Llamamos al método que busca directamente en SQLite
+           ObjCaja miCaja = misMetodos.buscarCajaPorId(id);
+            
+            if (miCaja != null) {
+                //Muestro el nombre automáticamente
+                txtNomCaja.setText(miCaja.getNombre());
+            } else {
+                txtNomCaja.setText("");
+                JOptionPane.showMessageDialog(this, "La caja con ID " + id + " no existe.");
+            }
+        } catch (NumberFormatException e) {
+            // Por si escriben letras en lugar de un número
+            txtNomCaja.setText("");
+        }
+    } else {
+        txtNomCaja.setText("");
+    }
+    }//GEN-LAST:event_txtNomCajaFocusLost
+
+    private void txtNomCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomCajaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomCajaActionPerformed
+
+    private void txtCajaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCajaFocusLost
+        // TODO add your handling code here:
+        if (!txtCaja.getText().trim().isEmpty()) {
+        try {
+            int id = Integer.parseInt(txtCaja.getText().trim());
+            
+            // Llamamos al método que busca directamente en SQLite
+           ObjCaja miCaja = misMetodos.buscarCajaPorId(id);
+            
+            if (miCaja != null) {
+                //Muestro el nombre automáticamente
+                txtNomCaja.setText(miCaja.getNombre());
+            } else {
+                txtNomCaja.setText("");
+                JOptionPane.showMessageDialog(this, "La caja con ID " + id + " no existe.");
+            }
+        } catch (NumberFormatException e) {
+            // Por si escriben letras en lugar de un número
+            txtNomCaja.setText("");
+        }
+    } else {
+        txtNomCaja.setText("");
+    }
+    }//GEN-LAST:event_txtCajaFocusLost
 
     
     
@@ -235,7 +392,10 @@ public class PnlOpsCajas extends javax.swing.JPanel {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cmbEstado;
-    private javax.swing.JScrollPane jScrollPane1;
+    private com.toedter.calendar.JDateChooser dtpFApertura;
+    private com.toedter.calendar.JDateChooser dtpFCierre;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblCaja;
     private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblFApertura;
@@ -244,7 +404,7 @@ public class PnlOpsCajas extends javax.swing.JPanel {
     private javax.swing.JLabel lblMApertura;
     private javax.swing.JLabel lblMCierre;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JList<String> lstCajas;
+    private javax.swing.JTable tblOp;
     private javax.swing.JTextField txtCaja;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtMApertura;

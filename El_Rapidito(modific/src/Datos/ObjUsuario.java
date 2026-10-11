@@ -12,11 +12,12 @@ public class ObjUsuario {
     
     //El nombre se realizara una modificacion de nombre + Apellido
     private int id;
-    private String nombre;
-    private String apellidos;
-    private String cedula;
-    private String correo;
-    private String telefono;
+    private String nombre;//
+    private String apellidos;//
+    private String cedula;//
+    private String correo;//
+    private String nombreUser;//
+    private String telefono;//
     private String direccion;
     private int estado; //0(inactivo) y 1(Activo)
     private int rol; //0(Admin), 1(Mesero), 3(Otro)
@@ -28,7 +29,10 @@ public class ObjUsuario {
     public ObjUsuario() {
     }
 
-    public ObjUsuario(int id, String cedula, String nombre, String apellidos, String direccion, String telefono, String correo, String nomUsuario, String clave, int estado, int rol) {
+    public ObjUsuario(int id, String cedula, String nombre,
+            String apellidos, String direccion,
+            String telefono, String correo,
+            String nomUsuario, String clave, int estado, int rol) {
         this.id = id;
         this.cedula = cedula;
         this.nombre = nombre;
@@ -36,7 +40,23 @@ public class ObjUsuario {
         this.direccion = direccion;
         this.telefono = telefono;
         this.correo = correo;
-        
+        this.nombreUser = nomUsuario;
+        this.clave = clave;
+        this.estado = estado;
+        this.rol = rol;
+    }
+    
+    public ObjUsuario(String cedula, String nombre, String apellidos,
+            String direccion, String telefono, String correo,
+            String nombreUser, String clave, int estado, int rol) {
+ 
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.nombreUser = nombreUser;
         this.clave = clave;
         this.estado = estado;
         this.rol = rol;
@@ -85,6 +105,11 @@ public class ObjUsuario {
     public String getTelefono() {
         return telefono;
     }
+
+    public String getNombreUser() {
+        return nombreUser;
+    }
+    
     
     
     //Setters
@@ -130,6 +155,12 @@ public class ObjUsuario {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+    public void setNombreUser(String nombreUser) {
+        this.nombreUser = nombreUser;
+    }
+    
+    
     
     
 }

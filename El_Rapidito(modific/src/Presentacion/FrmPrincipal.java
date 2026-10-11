@@ -147,6 +147,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnMovCaja = new javax.swing.JButton();
         btnCajas = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        btnUsuarios = new javax.swing.JButton();
         pnlSeccion = new javax.swing.JPanel();
         lblSeccionNombre = new javax.swing.JLabel();
         lblseccionRol = new javax.swing.JLabel();
@@ -277,6 +278,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnClientes.setForeground(new java.awt.Color(255, 255, 255));
         btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/contact-new.png"))); // NOI18N
         btnClientes.setText("Clientes");
+        btnClientes.addActionListener(this::btnClientesActionPerformed);
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo2ori (1).png"))); // NOI18N
 
@@ -327,22 +329,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnCajas.setMinimumSize(new java.awt.Dimension(32767, 32767));
         btnCajas.addActionListener(this::btnCajasActionPerformed);
 
+        btnUsuarios.setBackground(new java.awt.Color(19, 45, 82));
+        btnUsuarios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/user.png"))); // NOI18N
+        btnUsuarios.setText("Usuarios");
+        btnUsuarios.addActionListener(this::btnUsuariosActionPerformed);
+
         javax.swing.GroupLayout pnlMenuLayout = new javax.swing.GroupLayout(pnlMenu);
         pnlMenu.setLayout(pnlMenuLayout);
         pnlMenuLayout.setHorizontalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlSubInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlSubCaja, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnMesas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnClientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
-                    .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnFacturar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnInventario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)))
-                .addGap(0, 32601, Short.MAX_VALUE))
             .addGroup(pnlMenuLayout.createSequentialGroup()
                 .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -356,6 +353,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
                                 .addComponent(lblLogo)
                                 .addComponent(lblMenuPrincipal)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pnlMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(pnlSubInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pnlSubCaja, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnInventario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                            .addComponent(btnFacturar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnClientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                        .addComponent(btnMesas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(0, 32601, Short.MAX_VALUE))
         );
         pnlMenuLayout.setVerticalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -380,7 +391,9 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addComponent(btnMesas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnClientes)
-                .addContainerGap(32206, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnUsuarios)
+                .addContainerGap(32167, Short.MAX_VALUE))
         );
 
         scrMenu.setViewportView(pnlMenu);
@@ -444,7 +457,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         PnlOpsCajas OpsCajas = new PnlOpsCajas();
-        OpsCajas.setSize(630,550);
+        OpsCajas.setSize(630,670);
         OpsCajas.setLocation(0,0);
 
         //elimine el contendio que hay
@@ -478,6 +491,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesasActionPerformed
         // TODO add your handling code here:
+        pnlSubCaja.setVisible(false);
+        pnlSubInventario.setVisible(false);
     }//GEN-LAST:event_btnMesasActionPerformed
 
     private void btnIngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresosActionPerformed
@@ -499,7 +514,33 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturarActionPerformed
         // TODO add your handling code here:
+        pnlSubCaja.setVisible(false);
+        pnlSubInventario.setVisible(false);
     }//GEN-LAST:event_btnFacturarActionPerformed
+
+    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
+        // TODO add your handling code here:
+        PnlUsuarios user = new PnlUsuarios();
+        user.setSize(630, 670);
+        user.setLocation(0,0);
+
+        //elimine el contendio que hay
+        pnlContenido.removeAll();
+        //agregue lo que hay en el Pnl cajas a mi panel del contenido
+        pnlContenido.add(user);
+        //Compruebe de que no se este saliendo nada fuera del system
+        pnlContenido.revalidate();
+        //Dibujelo
+        pnlContenido.repaint();
+        pnlSubCaja.setVisible(false);
+        pnlSubInventario.setVisible(false);
+    }//GEN-LAST:event_btnUsuariosActionPerformed
+
+    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+        // TODO add your handling code here:
+        pnlSubCaja.setVisible(false);
+        pnlSubInventario.setVisible(false);
+    }//GEN-LAST:event_btnClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -536,6 +577,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnInventario;
     private javax.swing.JButton btnMesas;
     private javax.swing.JButton btnMovCaja;
+    private javax.swing.JButton btnUsuarios;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblMenuPrincipal;
