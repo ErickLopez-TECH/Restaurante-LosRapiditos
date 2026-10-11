@@ -36,6 +36,16 @@ public class ObjOpCajas {
         this.estado = estado;
     }
     
+    public ObjOpCajas(int idCaja, Date fechApertura, Double montoApetura, Date fechCierre, Double montoCierre, int estado) {
+
+        this.idCaja = idCaja;
+        this.fechApertura = fechApertura;
+        this.montoApetura = montoApetura;
+        this.fechCierre = fechCierre;
+        this.montoCierre = montoCierre;
+        this.estado = estado;
+    }
+    
    //getters
 
     public int getEstado() {

@@ -4,6 +4,8 @@
  */
 package Presentacion;
 
+import Datos.ObjUsuario;
+import Logica.Metodos;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -18,6 +20,8 @@ public class FrmLogin extends javax.swing.JFrame {
     /**
      * Creates new form FrmLogin
      */
+    
+    Metodos misMetodos = new Metodos();
     public FrmLogin() {
         
         initComponents();
@@ -99,26 +103,44 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         //Mis credenciales(Constantes)
-        final String miUsuario = "Lopez";
-        final String miPassword = "admin2026";
-        final String miRol = "Admin";
-        
-        //--capturar los valotres que el usuario digita
         String user = txtUsuario.getText();
-        String password = new String(txtPassword.getPassword());
+        String clave = new String(txtPassword.getPassword());
         
-        //--comparar y validar lo digitado vs mis credenciales
-        if (user.equals("") || (password.equals("")) ) {
-            JOptionPane.showMessageDialog(null, "Datos incorrectos","Aviso Importante",JOptionPane.WARNING_MESSAGE);
-            txtUsuario.requestFocus();
-        }else if(user.equals(miUsuario) || (password.equals(miPassword))){
-            FrmPrincipal prc = new FrmPrincipal(miUsuario,miRol);
-            prc.setLocationRelativeTo(null);
-            prc.setVisible(true);
-            this.setVisible(false);
+        if (user.isEmpty() || clave.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+        
+        ObjUsuario sesion = misMetodos.validarLogin(user, clave);
+        
+        if(sesion != null){
+            
+            //validar el estado 0-> Activo y 1 -> inactivo
+            if (sesion.getEstado() == 0) {
+                
+                String nombre = sesion.getNombre();
+                int rol = sesion.getRol();
+                String rolText = "";
+                if(rol == 0){
+                    rolText = "Administrador";
+                }else if(rol == 1){
+                    rolText = "Mesero";
+                }else{
+                    rolText = "Cocinero";
+                }
+                
+                FrmPrincipal prc = new FrmPrincipal(nombre,rolText);
+                prc.setLocationRelativeTo(null);
+                prc.setVisible(true);
+                this.setVisible(false);
+            }else{
+                JOptionPane.showMessageDialog(this, "Su cuenta se encuentra inactiva. COntacte al administrador", "Acceso Denegado",JOptionPane.ERROR_MESSAGE);
+            }
         }else{
-            JOptionPane.showMessageDialog(null, "Datos incorrectos","Aviso Importante",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Datos ingresados son incorrectos", "Acceso Denegado",JOptionPane.ERROR_MESSAGE);
+            
         }
+        
         
         
         

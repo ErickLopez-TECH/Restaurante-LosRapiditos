@@ -62,8 +62,8 @@ btnBorrar.setUI(new javax.swing.plaf.basic.BasicButtonUI()); // Desconecta la pi
         btnGuardar = new javax.swing.JButton();
         btnBorrar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        lstLista = new javax.swing.JList<>();
+        scrLista = new javax.swing.JScrollPane();
+        lstLista = new javax.swing.JTable();
 
         setMinimumSize(new java.awt.Dimension(630, 550));
 
@@ -100,12 +100,27 @@ btnBorrar.setUI(new javax.swing.plaf.basic.BasicButtonUI()); // Desconecta la pi
         btnBuscar.setText("...");
         btnBuscar.addActionListener(this::btnBuscarActionPerformed);
 
-        lstLista.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { " " };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(lstLista);
+        scrLista.setViewportView(lstLista);
+
+        lstLista.setAutoCreateRowSorter(true);
+        lstLista.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lstLista.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3"
+            }
+        ));
+        lstLista.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        lstLista.setRowHeight(25);
+        scrLista.setViewportView(lstLista);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -115,8 +130,7 @@ btnBorrar.setUI(new javax.swing.plaf.basic.BasicButtonUI()); // Desconecta la pi
                 .addGap(106, 106, 106)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(lblId)
                                 .addGap(304, 304, 304)
@@ -140,6 +154,10 @@ btnBorrar.setUI(new javax.swing.plaf.basic.BasicButtonUI()); // Desconecta la pi
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnBorrar)
                         .addGap(115, 115, 115))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addComponent(scrLista, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,9 +181,9 @@ btnBorrar.setUI(new javax.swing.plaf.basic.BasicButtonUI()); // Desconecta la pi
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnBorrar))
-                .addGap(55, 55, 55)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(72, 72, 72)
+                .addComponent(scrLista, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -176,7 +194,7 @@ btnBorrar.setUI(new javax.swing.plaf.basic.BasicButtonUI()); // Desconecta la pi
         String ubicacion = txtUbicacion.getText().trim();
 
         if (idTexto.isEmpty()) {
-            // 1. NUEVA CAJA: No pasamos ID, SQLite autogenera la clave primaria
+            // 1. NUEVA CAJA: SQLite autogenera la clave primaria
             ObjCaja miCaja = new ObjCaja(nombre, ubicacion);
             almacen.agregarCaja(miCaja); 
         } else {
@@ -270,11 +288,11 @@ btnBorrar.setUI(new javax.swing.plaf.basic.BasicButtonUI()); // Desconecta la pi
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JList<String> lstLista;
+    private javax.swing.JTable lstLista;
+    private javax.swing.JScrollPane scrLista;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtUbicacion;
