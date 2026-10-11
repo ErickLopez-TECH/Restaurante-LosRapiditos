@@ -33,6 +33,7 @@ construida con arquitectura por capas y persistencia ligera.
 ## 🎬 Demostración visual
 
 <div align="center">
+  <img alt="rapidito" src="https://github.com/user-attachments/assets/e19801f7-371d-4c1a-b996-2f84fa267339" style="max-width: 100%; height: auto;" />
   <img width="797" height="641" alt="rapidito" src="https://github.com/user-attachments/assets/e19801f7-371d-4c1a-b996-2f84fa267339" />
   <br>
   <sub><i>Navegación, edición y consulta de cajas e inventario en tiempo real.</i></sub>
